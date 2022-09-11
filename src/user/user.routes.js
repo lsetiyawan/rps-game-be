@@ -11,7 +11,7 @@ const userRouter = Router();
 
 /**
  * @swagger
- * /registration:
+ * /register:
  *  post:
  *    tags:
  *      - user
@@ -53,7 +53,7 @@ const userRouter = Router();
  *                  type: string
  */
 userRouter.post(
-  "/registration",
+  "/register",
   checkSchema(registrationValidationObject),
   validate,
   UserController.createUser

@@ -1,5 +1,14 @@
 const { Game, GameHistory } = require("../database/models");
 class GameController {
+  getAllGame = async (req, res) => {
+    try {
+      const allRoom = await Game.findAll();
+      return res.status(200).json(allRoom);
+    } catch (err) {
+      return res.status(500).json({ message: "Get all game room failed!" });
+    }
+  };
+
   createGame = async (req, res) => {
     const { room } = req.body;
     try {
