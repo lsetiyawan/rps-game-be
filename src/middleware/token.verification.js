@@ -6,7 +6,7 @@ const tokenVerification = async (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
   if (!token) {
-    return res.send("Missing Authorization header");
+    return res.status(401).send("Missing Authorization header");
   }
 
   try {
