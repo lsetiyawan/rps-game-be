@@ -10,6 +10,8 @@ const {
 
 const gameRouter = Router();
 
+gameRouter.get("/game", tokenVerification, gameControllers.getAllGame);
+
 /**
  * @swagger
  * /game:
