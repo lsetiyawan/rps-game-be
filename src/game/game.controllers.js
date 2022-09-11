@@ -9,6 +9,16 @@ class GameController {
     }
   };
 
+  getSingleGame = async (req, res) => {
+    const { gameId } = req.params;
+    try {
+      const theGame = await Game.findByPk(gameId);
+      return res.status(200).json(theGame);
+    } catch (err) {
+      return res.status(500).json({ message: "Get single game room failed!" });
+    }
+  };
+
   createGame = async (req, res) => {
     const { room } = req.body;
     try {
