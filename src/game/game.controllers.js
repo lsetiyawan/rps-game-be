@@ -2,7 +2,7 @@ const { Game, GameHistory } = require("../database/models");
 class GameController {
   getAllGame = async (req, res) => {
     try {
-      const allRoom = await Game.findAll();
+      const allRoom = await Game.findAll({ include: "theWinner" });
       return res.status(200).json(allRoom);
     } catch (err) {
       return res.status(500).json({ message: "Get all game room failed!" });
@@ -12,9 +12,12 @@ class GameController {
   getSingleGame = async (req, res) => {
     const { gameId } = req.params;
     try {
-      const theGame = await Game.findByPk(gameId);
+      const theGame = await Game.findByPk(gameId, {
+        include: ["theWinner", "plays"],
+      });
       return res.status(200).json(theGame);
     } catch (err) {
+      console.log(err);
       return res.status(500).json({ message: "Get single game room failed!" });
     }
   };

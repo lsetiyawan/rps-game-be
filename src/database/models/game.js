@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Game.belongsTo(models.User, { foreignKey: "winner", as: "theWinner" });
+      Game.hasMany(models.GameHistory, { foreignKey: "game_id", as: "plays" });
     }
   }
   Game.init(
