@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("See documentation URL/api-docs/#/");
+  res.send("See documentation => URL/api-docs/#/");
 });
 
 app.use(userRouter);
